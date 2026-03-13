@@ -1,0 +1,25 @@
+name: Bug report
+description: Report broken behavior
+labels: [bug]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug and expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include exact commands if possible.
+    validations:
+      required: true
+  - type: input
+    id: project
+    attributes:
+      label: Project folder
+      placeholder: e.g. fastapi-task-api
+    validations:
+      required: true

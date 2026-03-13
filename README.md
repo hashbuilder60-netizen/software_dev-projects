@@ -1,55 +1,39 @@
 # Software Dev Projects
 
-A multi-project repository showcasing practical software engineering work across CLI tooling and backend API development.
+A portfolio monorepo showcasing practical software engineering projects across backend, CLI, frontend, and algorithms.
 
 ## Projects
 
-### 1) Dev Journal CLI
-Path: `dev-journal-cli/`
+1. `dev-journal-cli/`
+   Python CLI task journal with SQLite, tests, and CI.
 
-A lightweight command-line task journal for developers.
+2. `fastapi-task-api/`
+   FastAPI REST API with validation, lifecycle tests, and CI.
 
-Highlights:
-- SQLite-backed task storage
-- Priority and tag support
-- Commands for add/list/done/delete/stats
-- Unit tests + GitHub Actions CI
+3. `frontend-portfolio-showcase/`
+   Responsive static frontend showcase (HTML/CSS/JS, no build tooling required).
 
-Quick start:
-```powershell
-cd dev-journal-cli
-pip install -e .
-dev-journal add "Ship first feature" --priority high --tags backend
-```
+4. `node-file-organizer-cli/`
+   Node.js CLI that organizes files by extension with dry-run mode and tests.
 
-### 2) FastAPI Task API
-Path: `fastapi-task-api/`
+5. `python-algorithms-toolkit/`
+   Python algorithms package (binary search, merge sort, two-sum) with tests.
 
-A clean REST API for task management using FastAPI.
+## Repository Standards Included
 
-Highlights:
-- Health endpoint
-- Task CRUD endpoints
-- Request/response validation with Pydantic
-- API tests + GitHub Actions CI
+- `LICENSE`
+- `CONTRIBUTING.md`
+- `CODE_OF_CONDUCT.md`
+- `SECURITY.md`
+- `.editorconfig`
+- `.gitattributes`
+- `.github/CODEOWNERS`
+- Issue templates and PR template
+- Dependabot config
 
-Quick start:
-```powershell
-cd fastapi-task-api
-pip install -e .[dev]
-uvicorn app.main:app --reload
-```
+## GitHub Profile Upgrade
 
-## Repository Goals
-
-- Show real project structure and maintainability
-- Demonstrate testing and CI practices
-- Build portfolio-ready software projects that can grow over time
-
-## CI Workflows
-
-- `dev-journal-cli/.github/workflows/ci.yml`
-- `.github/workflows/fastapi-task-api-ci.yml`
+Use `PROFILE_README_TEMPLATE.md` to create your GitHub profile README repository (`hashbuilder60-netizen/hashbuilder60-netizen`).
 
 ## Author
 

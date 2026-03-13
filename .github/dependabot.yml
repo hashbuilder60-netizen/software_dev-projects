@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/dev-journal-cli"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/fastapi-task-api"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/node-file-organizer-cli"
+    schedule:
+      interval: "weekly"

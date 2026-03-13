@@ -1,0 +1,16 @@
+{
+  "name": "node-file-organizer-cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Organize files in a folder by extension.",
+  "bin": {
+    "file-organizer": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

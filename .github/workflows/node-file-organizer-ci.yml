@@ -1,0 +1,26 @@
+name: Node File Organizer CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'node-file-organizer-cli/**'
+      - '.github/workflows/node-file-organizer-ci.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'node-file-organizer-cli/**'
+      - '.github/workflows/node-file-organizer-ci.yml'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: node-file-organizer-cli
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm test

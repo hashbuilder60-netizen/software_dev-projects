@@ -1,0 +1,14 @@
+# Ignore Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Ignore Node
+node_modules/
+coverage/
+
+# Generic
+.DS_Store
+Thumbs.db
