@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "observability-demo"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+  "fastapi>=0.115.0,<1.0.0",
+  "uvicorn>=0.30.0,<1.0.0",
+  "prometheus-client>=0.21.0,<1.0.0",
+  "sentry-sdk[fastapi]>=2.19.2,<3.0.0"
+]
+
+[project.scripts]
+observability-demo = "obs_demo.main:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]

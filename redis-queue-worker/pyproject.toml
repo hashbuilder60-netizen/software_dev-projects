@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "redis-queue-worker"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["redis>=5.0.0,<6.0.0"]
+
+[project.scripts]
+queue-producer = "queue_demo.producer:main"
+queue-worker = "queue_demo.worker:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
