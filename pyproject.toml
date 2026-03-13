@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dev-journal"
+version = "0.1.0"
+description = "A lightweight developer task journal CLI built with Python."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "hashbuilder60-netizen" }
+]
+license = { text = "MIT" }
+keywords = ["cli", "productivity", "tasks", "python"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "License :: OSI Approved :: MIT License",
+  "Environment :: Console",
+  "Intended Audience :: Developers"
+]
+
+[project.scripts]
+dev-journal = "dev_journal.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
