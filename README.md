@@ -1,6 +1,6 @@
 # Software Dev Projects
 
-A portfolio monorepo with practical projects across CLI tools, APIs, frontend, databases, auth, queues, cloud deployment, and observability.
+A portfolio monorepo with practical projects across CLI tools, APIs, frontend, databases, auth, queues, cloud deployment, observability, and DevOps workflows.
 
 ## Projects
 
