@@ -1,10 +1,3 @@
-# GitHub Profile README Template
-
-Create a separate repository named exactly `hashbuilder60-netizen` and place this as `README.md` in that repo.
-
-## Suggested Profile README Content
-
-```markdown
 # Hi, I'm Hashbuilder
 
 I build practical projects across software engineering, automation, AI workflows, web experiences, and developer tooling.
@@ -41,10 +34,3 @@ I build practical projects across software engineering, automation, AI workflows
 ## Connect
 - GitHub: https://github.com/hashbuilder60-netizen
 - Portfolio repo: https://github.com/hashbuilder60-netizen/software_dev-projects
-```
-
-## Notes
-
-- Keep this README short, scannable, and active.
-- Pin your most important repositories on your GitHub profile.
-- Update "Current Focus" every few weeks to keep your profile fresh.
