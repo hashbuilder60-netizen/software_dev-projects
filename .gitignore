@@ -1,13 +1,22 @@
 # Ignore Python
 __pycache__/
 *.py[cod]
+*.egg-info/
 .pytest_cache/
 .venv/
 venv/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+*.db
+*.sqlite3
 
 # Ignore Node
 node_modules/
 coverage/
+dist/
+*.tsbuildinfo
 
 # Generic
 .DS_Store
