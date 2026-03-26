@@ -1,27 +1,33 @@
-name: CI
+name: Dev Journal CLI CI
 
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'dev-journal-cli/**'
+      - '.github/workflows/dev-journal-cli-ci.yml'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'dev-journal-cli/**'
+      - '.github/workflows/dev-journal-cli-ci.yml'
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: dev-journal-cli
     strategy:
       matrix:
         python-version: ["3.10", "3.11", "3.12", "3.13"]
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
+      - run: |
           python -m pip install --upgrade pip
           pip install -e .
           pip install pytest
-      - name: Run tests
-        run: pytest -q
+      - run: pytest -q

@@ -1,0 +1,13 @@
+services:
+  orchestrator:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      IDEMPOTENT_ORCHESTRATOR_API_KEY: dev-control-plane-key
+      IDEMPOTENT_ORCHESTRATOR_DB_PATH: /app/data/jobs.db
+    volumes:
+      - orchestrator_data:/app/data
+
+volumes:
+  orchestrator_data:

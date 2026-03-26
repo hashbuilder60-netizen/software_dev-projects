@@ -8,7 +8,15 @@ updates:
     directory: "/fastapi-task-api"
     schedule:
       interval: "weekly"
+  - package-ecosystem: "pip"
+    directory: "/idempotent-job-orchestrator"
+    schedule:
+      interval: "weekly"
   - package-ecosystem: "npm"
     directory: "/node-file-organizer-cli"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/typescript-task-api"
     schedule:
       interval: "weekly"

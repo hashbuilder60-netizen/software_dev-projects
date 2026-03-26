@@ -1,20 +1,30 @@
 # Software Dev Projects
 
-A portfolio monorepo with practical projects across CLI tools, APIs, frontend, databases, auth, queues, cloud deployment, observability, and DevOps workflows.
+A curated monorepo of production-leaning services, platform primitives, and operational reference implementations spanning APIs, orchestration, data, observability, and delivery automation.
+
+## Advanced Highlights
+
+- `fastapi-task-api/` uses layered architecture, SQLite persistence, filtering, pagination, and operational stats
+- `idempotent-job-orchestrator/` now acts as the flagship backend service with control-plane auth, revisioned jobs, audit events, metrics, and containerized execution
+- `typescript-task-api/` now demonstrates idempotency, optimistic concurrency, and contract-style service boundaries
+- `repo-health.yml` and `tools/repo_health.py` enforce monorepo hygiene instead of relying on convention alone
+- CI workflows are centralized at the repository root so every active pipeline is actually enforced by GitHub Actions
+- `docs/monorepo-architecture.md` documents how the portfolio should evolve as projects move toward production-grade standards
 
 ## Projects
 
-1. `dev-journal-cli/` - Python CLI task journal with SQLite and tests.
-2. `fastapi-task-api/` - FastAPI task API with endpoint tests.
-3. `frontend-portfolio-showcase/` - Responsive static frontend showcase.
-4. `node-file-organizer-cli/` - Node CLI for organizing files by extension.
-5. `python-algorithms-toolkit/` - Core algorithm implementations in Python.
-6. `typescript-task-api/` - TypeScript + Express API with Vitest test setup.
-7. `postgres-docker-starter/` - Docker Compose PostgreSQL starter with seed SQL.
-8. `jwt-auth-service/` - TypeScript JWT auth service (`/register`, `/login`, `/me`).
-9. `redis-queue-worker/` - Python producer/worker demo using Redis queues.
-10. `aws-deploy-pipeline/` - Terraform + GitHub Actions AWS deployment template.
-11. `observability-demo/` - FastAPI app with logs, Prometheus metrics, and Sentry integration.
+1. `aws-deploy-pipeline/` - Terraform + GitHub Actions AWS deployment template.
+2. `dev-journal-cli/` - SQLite-backed developer workflow CLI with tests and packaging.
+3. `fastapi-task-api/` - Layered FastAPI service with persistence, filtering, and richer operational semantics.
+4. `frontend-portfolio-showcase/` - Responsive frontend showcase for portfolio-oriented web delivery.
+5. `idempotent-job-orchestrator/` - Flagship backend service with authenticated control-plane access, revisioned jobs, audit trails, metrics, deployment artifacts, and retry-aware orchestration.
+6. `jwt-auth-service/` - TypeScript authentication service with JWT-based access control.
+7. `node-file-organizer-cli/` - Node.js CLI for filesystem normalization and dry-run execution.
+8. `observability-demo/` - FastAPI observability reference app with logs, metrics, and Sentry integration.
+9. `postgres-docker-starter/` - Local data platform starter with PostgreSQL and containerized bootstrap scripts.
+10. `python-algorithms-toolkit/` - Reference implementations for core algorithmic patterns.
+11. `redis-queue-worker/` - Queue producer/worker reference for background processing patterns.
+12. `typescript-task-api/` - TypeScript + Express service with optimistic concurrency, idempotency semantics, and operational listing/stats.
 
 ## Repository Standards
 
@@ -25,8 +35,10 @@ A portfolio monorepo with practical projects across CLI tools, APIs, frontend, d
 - `.editorconfig`
 - `.gitattributes`
 - `.github/CODEOWNERS`
-- Issue templates + PR template
+- issue templates + PR template
 - Dependabot config
+- repo health workflow + structure validator
+- centralized root-level CI workflows
 
 ## Profile Files
 
