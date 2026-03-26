@@ -27,6 +27,7 @@ class Job(BaseModel):
     idempotency_key: str
     priority: JobPriority
     state: JobState
+    revision: int
     attempts: int
     max_retries: int
     backoff_seconds: int
@@ -55,3 +56,18 @@ class JobStats(BaseModel):
     retry_pending: int
     succeeded: int
     failed: int
+
+
+class AuditEvent(BaseModel):
+    id: int
+    job_id: str
+    event_type: str
+    actor: str
+    request_id: str
+    metadata: dict[str, Any]
+    created_at: datetime
+
+
+class AuditEventListResponse(BaseModel):
+    items: list[AuditEvent]
+    total: int

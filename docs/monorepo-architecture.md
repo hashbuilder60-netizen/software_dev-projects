@@ -20,6 +20,7 @@ This repository is organized as a portfolio monorepo, but each folder is expecte
 
 ## Advanced Direction
 
+- Maintain at least one flagship service that demonstrates auth, durability, observability, and deployment readiness together
 - Prefer layered application design for APIs
 - Prefer persistence-backed examples over in-memory-only demos
 - Add observability, CI, and deployment paths when a project grows

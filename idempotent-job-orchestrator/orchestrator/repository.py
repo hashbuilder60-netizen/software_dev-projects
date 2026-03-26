@@ -1,9 +1,10 @@
 import json
 import sqlite3
 from datetime import datetime
+from typing import Any
 
 from .db import OrchestratorDatabase
-from .models import Job
+from .models import AuditEvent, Job
 
 
 class JobRepository:
@@ -27,9 +28,9 @@ class JobRepository:
                 """
                 INSERT INTO jobs(
                     id, job_type, payload, idempotency_key, priority, state,
-                    attempts, max_retries, backoff_seconds, created_at, updated_at
+                    revision, attempts, max_retries, backoff_seconds, created_at, updated_at
                 )
-                VALUES(?, ?, ?, ?, ?, 'queued', 0, ?, ?, ?, ?)
+                VALUES(?, ?, ?, ?, ?, 'queued', 1, 0, ?, ?, ?, ?)
                 """,
                 (
                     job_id,
@@ -108,6 +109,7 @@ class JobRepository:
         job_id: str,
         *,
         state: str,
+        revision: int,
         attempts: int,
         updated_at: str,
         error_message: str | None,
@@ -117,14 +119,64 @@ class JobRepository:
             cursor = connection.execute(
                 """
                 UPDATE jobs
-                SET state = ?, attempts = ?, updated_at = ?, error_message = ?, next_run_at = ?
+                SET state = ?, revision = ?, attempts = ?, updated_at = ?, error_message = ?, next_run_at = ?
                 WHERE id = ?
                 """,
-                (state, attempts, updated_at, error_message, next_run_at, job_id),
+                (state, revision, attempts, updated_at, error_message, next_run_at, job_id),
             )
         if cursor.rowcount == 0:
             return None
         return self.get_job(job_id)
+
+    def record_audit_event(
+        self,
+        *,
+        job_id: str,
+        event_type: str,
+        actor: str,
+        request_id: str,
+        metadata: dict[str, Any],
+        created_at: str,
+    ) -> None:
+        with self.database.connect() as connection:
+            connection.execute(
+                """
+                INSERT INTO audit_events(job_id, event_type, actor, request_id, metadata, created_at)
+                VALUES(?, ?, ?, ?, ?, ?)
+                """,
+                (
+                    job_id,
+                    event_type,
+                    actor,
+                    request_id,
+                    json.dumps(metadata, sort_keys=True),
+                    created_at,
+                ),
+            )
+
+    def list_audit_events(self, *, job_id: str | None, limit: int) -> tuple[list[AuditEvent], int]:
+        where = "WHERE job_id = ?" if job_id else ""
+        parameters: tuple[object, ...] = (job_id,) if job_id else ()
+
+        with self.database.connect() as connection:
+            total = int(
+                connection.execute(
+                    f"SELECT COUNT(*) FROM audit_events {where}",
+                    parameters,
+                ).fetchone()[0]
+            )
+            rows = connection.execute(
+                f"""
+                SELECT *
+                FROM audit_events
+                {where}
+                ORDER BY created_at DESC, id DESC
+                LIMIT ?
+                """,
+                (*parameters, limit),
+            ).fetchall()
+
+        return [self._to_audit_event(row) for row in rows], total
 
     def stats(self) -> dict[str, int]:
         with self.database.connect() as connection:
@@ -156,6 +208,7 @@ class JobRepository:
             idempotency_key=str(row["idempotency_key"]),
             priority=str(row["priority"]),
             state=str(row["state"]),
+            revision=int(row["revision"]),
             attempts=int(row["attempts"]),
             max_retries=int(row["max_retries"]),
             backoff_seconds=int(row["backoff_seconds"]),
@@ -163,4 +216,16 @@ class JobRepository:
             created_at=datetime.fromisoformat(str(row["created_at"])),
             updated_at=datetime.fromisoformat(str(row["updated_at"])),
             next_run_at=datetime.fromisoformat(str(row["next_run_at"])) if row["next_run_at"] else None,
+        )
+
+    @staticmethod
+    def _to_audit_event(row: sqlite3.Row) -> AuditEvent:
+        return AuditEvent(
+            id=int(row["id"]),
+            job_id=str(row["job_id"]),
+            event_type=str(row["event_type"]),
+            actor=str(row["actor"]),
+            request_id=str(row["request_id"]),
+            metadata=json.loads(str(row["metadata"])),
+            created_at=datetime.fromisoformat(str(row["created_at"])),
         )

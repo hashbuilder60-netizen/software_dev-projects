@@ -5,7 +5,7 @@ A curated monorepo of production-leaning services, platform primitives, and oper
 ## Advanced Highlights
 
 - `fastapi-task-api/` uses layered architecture, SQLite persistence, filtering, pagination, and operational stats
-- `idempotent-job-orchestrator/` models idempotent writes, retry scheduling, and explicit job lifecycle transitions
+- `idempotent-job-orchestrator/` now acts as the flagship backend service with control-plane auth, revisioned jobs, audit events, metrics, and containerized execution
 - `typescript-task-api/` now demonstrates idempotency, optimistic concurrency, and contract-style service boundaries
 - `repo-health.yml` and `tools/repo_health.py` enforce monorepo hygiene instead of relying on convention alone
 - CI workflows are centralized at the repository root so every active pipeline is actually enforced by GitHub Actions
@@ -17,7 +17,7 @@ A curated monorepo of production-leaning services, platform primitives, and oper
 2. `dev-journal-cli/` - SQLite-backed developer workflow CLI with tests and packaging.
 3. `fastapi-task-api/` - Layered FastAPI service with persistence, filtering, and richer operational semantics.
 4. `frontend-portfolio-showcase/` - Responsive frontend showcase for portfolio-oriented web delivery.
-5. `idempotent-job-orchestrator/` - Operational orchestration service with idempotency keys, retry windows, and lifecycle transitions.
+5. `idempotent-job-orchestrator/` - Flagship backend service with authenticated control-plane access, revisioned jobs, audit trails, metrics, deployment artifacts, and retry-aware orchestration.
 6. `jwt-auth-service/` - TypeScript authentication service with JWT-based access control.
 7. `node-file-organizer-cli/` - Node.js CLI for filesystem normalization and dry-run execution.
 8. `observability-demo/` - FastAPI observability reference app with logs, metrics, and Sentry integration.
