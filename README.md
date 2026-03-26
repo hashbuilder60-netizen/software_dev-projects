@@ -1,26 +1,28 @@
 # Software Dev Projects
 
-A portfolio monorepo with practical projects across CLI tools, APIs, frontend, databases, auth, queues, cloud deployment, observability, and DevOps workflows.
+A curated monorepo of production-leaning services, platform primitives, and operational reference implementations spanning APIs, orchestration, data, observability, and delivery automation.
 
 ## Advanced Highlights
 
-- `fastapi-task-api/` now uses layered architecture, SQLite persistence, filtering, pagination, and stats
-- `repo-health.yml` and `tools/repo_health.py` keep the monorepo structure honest
-- `docs/monorepo-architecture.md` documents how the repo should evolve as projects mature
+- `fastapi-task-api/` uses layered architecture, SQLite persistence, filtering, pagination, and operational stats
+- `idempotent-job-orchestrator/` models idempotent writes, retry scheduling, and explicit job lifecycle transitions
+- `repo-health.yml` and `tools/repo_health.py` enforce monorepo hygiene instead of relying on convention alone
+- `docs/monorepo-architecture.md` documents how the portfolio should evolve as projects move toward production-grade standards
 
 ## Projects
 
 1. `aws-deploy-pipeline/` - Terraform + GitHub Actions AWS deployment template.
-2. `dev-journal-cli/` - Python CLI task journal with SQLite and tests.
-3. `fastapi-task-api/` - Layered FastAPI task API with SQLite persistence and richer tests.
-4. `frontend-portfolio-showcase/` - Responsive static frontend showcase.
-5. `jwt-auth-service/` - TypeScript JWT auth service (`/register`, `/login`, `/me`).
-6. `node-file-organizer-cli/` - Node CLI for organizing files by extension.
-7. `observability-demo/` - FastAPI app with logs, Prometheus metrics, and Sentry integration.
-8. `postgres-docker-starter/` - Docker Compose PostgreSQL starter with seed SQL.
-9. `python-algorithms-toolkit/` - Core algorithm implementations in Python.
-10. `redis-queue-worker/` - Python producer/worker demo using Redis queues.
-11. `typescript-task-api/` - TypeScript + Express API with Vitest test setup.
+2. `dev-journal-cli/` - SQLite-backed developer workflow CLI with tests and packaging.
+3. `fastapi-task-api/` - Layered FastAPI service with persistence, filtering, and richer operational semantics.
+4. `frontend-portfolio-showcase/` - Responsive frontend showcase for portfolio-oriented web delivery.
+5. `idempotent-job-orchestrator/` - Operational orchestration service with idempotency keys, retry windows, and lifecycle transitions.
+6. `jwt-auth-service/` - TypeScript authentication service with JWT-based access control.
+7. `node-file-organizer-cli/` - Node.js CLI for filesystem normalization and dry-run execution.
+8. `observability-demo/` - FastAPI observability reference app with logs, metrics, and Sentry integration.
+9. `postgres-docker-starter/` - Local data platform starter with PostgreSQL and containerized bootstrap scripts.
+10. `python-algorithms-toolkit/` - Reference implementations for core algorithmic patterns.
+11. `redis-queue-worker/` - Queue producer/worker reference for background processing patterns.
+12. `typescript-task-api/` - TypeScript + Express API scaffold with test harness integration.
 
 ## Repository Standards
 

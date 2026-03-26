@@ -5,6 +5,7 @@ This repository is organized as a portfolio monorepo, but each folder is expecte
 ## Project Groups
 
 - `backend-services`: `fastapi-task-api`, `jwt-auth-service`, `observability-demo`
+- `orchestration-and-workflows`: `idempotent-job-orchestrator`, `redis-queue-worker`
 - `cli-and-tooling`: `dev-journal-cli`, `node-file-organizer-cli`, `redis-queue-worker`
 - `frontend-and-web`: `frontend-portfolio-showcase`, `web integrations in other repos`
 - `platform-and-infra`: `postgres-docker-starter`, `aws-deploy-pipeline`
