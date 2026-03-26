@@ -6,7 +6,9 @@ A curated monorepo of production-leaning services, platform primitives, and oper
 
 - `fastapi-task-api/` uses layered architecture, SQLite persistence, filtering, pagination, and operational stats
 - `idempotent-job-orchestrator/` models idempotent writes, retry scheduling, and explicit job lifecycle transitions
+- `typescript-task-api/` now demonstrates idempotency, optimistic concurrency, and contract-style service boundaries
 - `repo-health.yml` and `tools/repo_health.py` enforce monorepo hygiene instead of relying on convention alone
+- CI workflows are centralized at the repository root so every active pipeline is actually enforced by GitHub Actions
 - `docs/monorepo-architecture.md` documents how the portfolio should evolve as projects move toward production-grade standards
 
 ## Projects
@@ -22,7 +24,7 @@ A curated monorepo of production-leaning services, platform primitives, and oper
 9. `postgres-docker-starter/` - Local data platform starter with PostgreSQL and containerized bootstrap scripts.
 10. `python-algorithms-toolkit/` - Reference implementations for core algorithmic patterns.
 11. `redis-queue-worker/` - Queue producer/worker reference for background processing patterns.
-12. `typescript-task-api/` - TypeScript + Express API scaffold with test harness integration.
+12. `typescript-task-api/` - TypeScript + Express service with optimistic concurrency, idempotency semantics, and operational listing/stats.
 
 ## Repository Standards
 
@@ -36,6 +38,7 @@ A curated monorepo of production-leaning services, platform primitives, and oper
 - issue templates + PR template
 - Dependabot config
 - repo health workflow + structure validator
+- centralized root-level CI workflows
 
 ## Profile Files
 

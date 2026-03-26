@@ -17,6 +17,7 @@ node_modules/
 coverage/
 dist/
 *.tsbuildinfo
+typescript-task-api/data/
 
 # Generic
 .DS_Store

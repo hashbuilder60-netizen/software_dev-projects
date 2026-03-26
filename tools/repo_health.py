@@ -41,6 +41,23 @@ def collect_issues(projects: list[Path]) -> list[str]:
     if tracked_artifacts:
         issues.extend(f"generated artifact committed: {path}" for path in tracked_artifacts)
 
+    nested_workflows = [
+        path.relative_to(ROOT)
+        for path in ROOT.rglob("*.yml")
+        if ".github" in path.parts
+        and "workflows" in path.parts
+        and path.parent != ROOT / ".github" / "workflows"
+    ]
+    nested_workflows.extend(
+        path.relative_to(ROOT)
+        for path in ROOT.rglob("*.yaml")
+        if ".github" in path.parts
+        and "workflows" in path.parts
+        and path.parent != ROOT / ".github" / "workflows"
+    )
+    if nested_workflows:
+        issues.extend(f"workflow must live at repo root: {path}" for path in nested_workflows)
+
     return issues
 
 
